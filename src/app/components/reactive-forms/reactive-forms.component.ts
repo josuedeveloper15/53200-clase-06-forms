@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import Swal from 'sweetalert2';
+import { noHomeroValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -30,7 +36,7 @@ export class ReactiveFormsComponent {
 
   userForm = this.formBuilder.group({
     // name: this.formBuilder.control(''),
-    name: [''],
+    name: ['', [noHomeroValidator]],
     lastName: this.formBuilder.control(''),
     email: this.formBuilder.control('', [
       // Validators.email,
@@ -40,12 +46,22 @@ export class ReactiveFormsComponent {
     contrasena: ['', Validators.required],
   });
 
+  // SIN FORM BUILDER
+  // userForm = new FormGroup({
+  //   name: new FormControl(''),
+  //   email: new FormControl()
+  // })
+
   get emailControl() {
     return this.userForm.get('email');
   }
 
   get contrasenaControl() {
     return this.userForm.get('contrasena');
+  }
+
+  get nameControl() {
+    return this.userForm.get('name');
   }
 
   constructor(private formBuilder: FormBuilder) {

@@ -32,13 +32,19 @@
           </div>
         </div>
         <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
+          <label class="form-label">Nombre</label>
           <input
+            [class.is-invalid]="nameControl?.touched && nameControl?.invalid"
+            formControlName="name"
             type="text"
             class="form-control"
-            id="inputAddress"
-            placeholder="1234 Main St"
           />
+          <div
+            *ngIf="nameControl?.hasError('noHomero')"
+            class="invalid-feedback"
+          >
+            No se admiten Homeros
+          </div>
         </div>
         <!--
         <div class="col-12">
