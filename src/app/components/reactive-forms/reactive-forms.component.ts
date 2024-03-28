@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -23,11 +23,23 @@ export class ReactiveFormsComponent {
    *
    */
 
+  // loginForm = this.formBuilder.group({})
+
+  // userForm: FormGroup;
+
   userForm = this.formBuilder.group({
-    name: this.formBuilder.control(''),
+    // name: this.formBuilder.control(''),
+    name: [''],
     lastName: this.formBuilder.control(''),
     email: this.formBuilder.control(''),
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+    // this.userForm = this.formBuilder.group({
+    //   // name: this.formBuilder.control(''),
+    //   name: [''],
+    //   lastName: this.formBuilder.control(''),
+    //   email: this.formBuilder.control(''),
+    // });
+  }
 }
