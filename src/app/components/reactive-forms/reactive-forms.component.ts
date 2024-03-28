@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -36,8 +37,16 @@ export class ReactiveFormsComponent {
       Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'),
       Validators.required,
     ]),
-    contrasena: [''],
+    contrasena: ['', Validators.required],
   });
+
+  get emailControl() {
+    return this.userForm.get('email');
+  }
+
+  get contrasenaControl() {
+    return this.userForm.get('contrasena');
+  }
 
   constructor(private formBuilder: FormBuilder) {
     // this.userForm = this.formBuilder.group({
@@ -49,6 +58,11 @@ export class ReactiveFormsComponent {
   }
 
   onSubmit(): void {
-    alert('Usuario creado' + JSON.stringify(this.userForm.value));
+    // alert('Usuario creado' + JSON.stringify(this.userForm.value));
+    Swal.fire({
+      icon: 'success',
+      title: 'Realizado',
+      text: 'Usuario registrado',
+    });
   }
 }

@@ -8,6 +8,7 @@
             formControlName="email"
             type="email"
             class="form-control"
+            [ngClass]="emailControl?.valid ? 'is-valid' : ''"
             id="inputEmail4"
           />
         </div>
@@ -17,6 +18,8 @@
             formControlName="contrasena"
             type="password"
             class="form-control"
+            [class.is-valid]="contrasenaControl?.valid"
+            [class.is-invalid]="contrasenaControl?.invalid"
             id="inputPassword4"
           />
         </div>
