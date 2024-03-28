@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <form #myForm="ngForm" class="row g-3">
+      <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" class="row g-3">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
           <input
@@ -16,6 +16,20 @@
             class="form-control"
             id="inputEmail4"
           />
+          <div
+            *ngIf="emailControl.hasError('required')"
+            class="invalid-feedback"
+          >
+            Este campo es requerido
+          </div>
+          <div
+            *ngIf="emailControl.hasError('pattern')"
+            class="invalid-feedback"
+          >
+            Este no es un email valido
+          </div>
+
+          <!-- {{ emailControl.errors | json }} -->
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password</label>

@@ -19,9 +19,17 @@
             type="password"
             class="form-control"
             [class.is-valid]="contrasenaControl?.valid"
-            [class.is-invalid]="contrasenaControl?.invalid"
+            [class.is-invalid]="
+              contrasenaControl?.touched && contrasenaControl?.invalid
+            "
             id="inputPassword4"
           />
+          <div
+            *ngIf="contrasenaControl?.hasError('required')"
+            class="invalid-feedback"
+          >
+            Este campo es requerido
+          </div>
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Address</label>
