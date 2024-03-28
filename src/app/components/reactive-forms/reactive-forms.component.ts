@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -31,7 +31,12 @@ export class ReactiveFormsComponent {
     // name: this.formBuilder.control(''),
     name: [''],
     lastName: this.formBuilder.control(''),
-    email: this.formBuilder.control(''),
+    email: this.formBuilder.control('', [
+      // Validators.email,
+      Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'),
+      Validators.required,
+    ]),
+    contrasena: [''],
   });
 
   constructor(private formBuilder: FormBuilder) {
@@ -41,5 +46,9 @@ export class ReactiveFormsComponent {
     //   lastName: this.formBuilder.control(''),
     //   email: this.formBuilder.control(''),
     // });
+  }
+
+  onSubmit(): void {
+    alert('Usuario creado' + JSON.stringify(this.userForm.value));
   }
 }

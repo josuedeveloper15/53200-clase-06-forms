@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <form [formGroup]="userForm" class="row g-3">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
           <input
@@ -11,9 +11,14 @@
             id="inputEmail4"
           />
         </div>
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" />
+          <input
+            formControlName="contrasena"
+            type="password"
+            class="form-control"
+            id="inputPassword4"
+          />
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Address</label>
@@ -24,6 +29,7 @@
             placeholder="1234 Main St"
           />
         </div>
+        <!--
         <div class="col-12">
           <label for="inputAddress2" class="form-label">Address 2</label>
           <input
@@ -56,12 +62,14 @@
             </label>
           </div>
         </div>
+        -->
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Sign in</button>
-        </div> -->
+        </div>
       </form>
     </div>
     <div class="col-6">
+      <pre>{{ userForm.status }}</pre>
       <pre>{{ userForm.value | json }}</pre>
     </div>
   </div>
